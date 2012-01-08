@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Sample namespace js</title>
+        <script type="text/javascript" src="namespace.js"></script>
+        <script type="text/javascript">
+            // file MyClass.js
+            namespace('sr.oshiro', {
+                'MyClass': function(){
+                    this.myMethod = function(){
+                        document.write('Hello word');
+                    }
+                }
+            });
+
+            // You can add more class in the package or namespace with function
+            namespace('sr.oshiro', function(){
+                var privateVariable = 'nice';
+
+                function MyOtherClass(){
+                    this.myMethod = function(){
+                        alert(privateVariable);
+                    }
+                }
+
+                function PrivateClass(){
+                    this.myMethod = function() { alert('nothing') }    
+                }
+
+                // export the public class
+                return {MyOtherClass: MyOtherClass};
+            });
+
+            // this is like "import br.oshiro.MyClass" for Java user
+            var MyClass = sr.oshiro.MyClass;
+            var myClass = new MyClass();
+            myClass.myMethod();
+
+            var myOtherClass = new sr.oshiro.MyOtherClass();
+            myOtherClass.myMethod();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Sample namespace js</title>
+        <script type="text/javascript" src="namespace.js"></script>
+        <script type="text/javascript">
+            // file MyClass.js
+            namespace('sr.oshiro', {
+                'MyClass': function(){
+                    this.myMethod = function(){
+                        document.write('Hello word');
+                    }
+                }
+            });
+            // this is like "import br.oshiro.MyClass" for Java user
+            var MyClass = sr.oshiro.MyClass;
+            var myClass = new MyClass();
+            myClass.myMethod();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
