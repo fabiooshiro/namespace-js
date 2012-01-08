@@ -1,6 +1,8 @@
 /**
- * The code
+ * The source code
+ * https://github.com/fabiooshiro/namespace-js
  * author: Fabio Issamu Oshiro (Sr. Oshiro)
+ * ref: http://blog.stannard.net.au/2011/01/14/creating-namespaces-in-javascript/
  */
 function namespace(name, publics){
     var path = name.split('\.');
