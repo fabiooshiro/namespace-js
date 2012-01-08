@@ -34,3 +34,10 @@ namespace('my.package', function(){
 
 As you can see its easy to put old code inside a namespace.
 
+```
+    // import like java
+    var MyClass = my.package.MyClass;
+    
+    var myClass = new MyClass();
+    myClass.myMethod();
+```
