@@ -4,6 +4,7 @@ Namespace JS
 The easy way to create a namespace in javascript context
 
 Without namespace:
+
 ```
     var badPublic = 'its bad public variable';
     function MyClass(){
