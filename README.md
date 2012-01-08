@@ -17,7 +17,7 @@ function MyClass(){
 With namespace:
 
 ```js
-namespace('my.package', function(){
+namespace('my.package1', function(){
     // not bad
     var badPublic = 'its bad public variable';
 
@@ -37,7 +37,7 @@ As you can see its easy to put old code inside a namespace.
 
 ```js
 // import like java
-var MyClass = my.package.MyClass;
+var MyClass = my.package1.MyClass;
     
 var myClass = new MyClass();
 myClass.myMethod();
