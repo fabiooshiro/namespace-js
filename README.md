@@ -5,18 +5,18 @@ The easy way to create a namespace in javascript context
 
 Without namespace:
 
-```
-    var badPublic = 'its bad public variable';
-    function MyClass(){
-        this.myMethod = function(){
-            alert('Hello world!');
-        }
+```js
+var badPublic = 'its bad public variable';
+function MyClass(){
+    this.myMethod = function(){
+        alert('Hello world!');
     }
+}
 ```
 
 With namespace:
 
-```
+```js
 namespace('my.package', function(){
     // not bad
     var badPublic = 'its bad public variable';
@@ -28,16 +28,17 @@ namespace('my.package', function(){
         }
     }
 
-    return {MyClass: MyClass};
+    // turn public MyClass
+    return { MyClass: MyClass };
 });
 ```
 
 As you can see its easy to put old code inside a namespace.
 
-```
-    // import like java
-    var MyClass = my.package.MyClass;
+```js
+// import like java
+var MyClass = my.package.MyClass;
     
-    var myClass = new MyClass();
-    myClass.myMethod();
+var myClass = new MyClass();
+myClass.myMethod();
 ```
