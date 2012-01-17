@@ -42,3 +42,6 @@ var MyClass = my.package1.MyClass;
 var myClass = new MyClass();
 myClass.myMethod();
 ```
+
+The project is licensed under the WTFPL.
+http://sam.zoy.org/wtfpl/
