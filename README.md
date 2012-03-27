@@ -43,5 +43,12 @@ var myClass = new MyClass();
 myClass.myMethod();
 ```
 
+### Who is using namespace.js
+
+#### Traffic Cone
+https://github.com/j03m/trafficcone
+
+### License
+
 The project is licensed under the WTFPL.
 http://sam.zoy.org/wtfpl/
