@@ -2,6 +2,7 @@ Backbone Support
 ================
 
 Create backbone models:
+
 ```js
 namespace("my.app.models", function(model){
     model("Sculpture", {
