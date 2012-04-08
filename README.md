@@ -43,6 +43,22 @@ var myClass = new MyClass();
 myClass.myMethod();
 ```
 
+## Other syntax
+
+```js
+namespace('my.pack1', {
+    MyClass: {
+        myMethod: function(){
+            alert('Hello world');
+        }
+    }
+});
+```
+
+## Backbone.js support 
+
+[backbone support docs](https://github.com/fabiooshiro/namespace-js/blob/master/docs/backbone-js.md "Backbone.js")
+
 ### Who is using namespace.js
 
 #### Traffic Cone
