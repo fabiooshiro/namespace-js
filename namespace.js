@@ -11,20 +11,51 @@
  * author: Fabio Issamu Oshiro (Sr. Oshiro)
  * ref: http://blog.stannard.net.au/2011/01/14/creating-namespaces-in-javascript/
  */
-function namespace(name, publics){
-    var path = name.split('\.');
-    var cpath = '';
-    for(var i=0;i<path.length;i++){
-        cpath += path[i];
-        if(typeof(eval('this.' + cpath)) == 'undefined'){
-            eval(cpath + '={}');
+var namespace;
+
+(function(){
+    var hasBackboneJs = typeof(Backbone) != 'undefined';
+    var root = this;
+    var loadDsl;
+    var unloadDsl;
+    if(hasBackboneJs){
+        loadDsl = function(ns, name){
+            var model = function(modelName, body){
+                body['className'] = name + '.' + modelName;
+                ns[modelName] = Backbone.Model.extend({
+                    defaults: body
+                });
+            };
+            var view = function(viewName, body){
+                ns[viewName] = Backbone.View.extend(body);
+            };
+            return [model, view];
+        };
+        unloadDsl = function(){
+        }; 
+    }else{
+        loadDsl = function(ns, name){};
+        unloadDsl = function(){};
+    }
+    
+    namespace = function (name, publics){
+        var path = name.split('\.');
+        var cpath = '';
+        for(var i=0;i<path.length;i++){
+            cpath += path[i];
+            if(typeof(eval('this.' + cpath)) == 'undefined'){
+                eval(cpath + '={}');
+            }
+            cpath += '.';
         }
-        cpath += '.';
+        var ns = eval(name);
+        var dsl = loadDsl(ns, name);
+        if(typeof(publics) == 'function'){
+            publics = publics.apply(root, dsl);
+        }
+        unloadDsl();
+        for(var key in publics){
+            ns[key] = publics[key];
+        }
     }
-    var ns = eval(name);
-    var key;
-    if(typeof(publics) == 'function') publics = publics();
-    for(key in publics){
-        ns[key] = publics[key];
-    }
-}
+})();
